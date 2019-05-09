@@ -2,7 +2,11 @@
 <div class="footerBox">
   <div id="footer">
     <ul>
+<<<<<<< HEAD
       <router-link tag="li" v-for="(item,index) in tabbar" :key="index" :to="item.path">
+=======
+      <router-link tag="li" v-for="(item,index) in tabbar" :to="item.path" :key="index">
+>>>>>>> wei2
         <i class="iconfont" v-html="item.icon"></i>
         <span>{{item.title}}</span>
       </router-link>

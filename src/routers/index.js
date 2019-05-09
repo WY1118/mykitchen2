@@ -4,6 +4,7 @@ import shouye from "./shouye/index.js";
 import fenlei from "./fenlei/index.js";
 import shopcar from "./shopcar/index.js";
 import mine from "./mine/index.js";
+<<<<<<< HEAD
 import goodsinfo from "./shouye/goodsInfo/index.js";
 
 import buyone from "./shouye/nav/buyone.js";
@@ -18,6 +19,11 @@ import setmeal from "./shouye/nav/setmeal.js";
 
 import reclassify from "./fenlei/reclassify/index.js";
 // import reclassify from "./fenlei/reclassify/index.js";
+=======
+import menu from "./mine/menu/menu.js";
+import Gbuying from "./mine/Gbuying/Gbuying.js";
+
+>>>>>>> wei2
 
 Vue.use(Router)
 
@@ -31,6 +37,7 @@ export default new Router({
     fenlei,
     shopcar,
     mine,
+<<<<<<< HEAD
     goodsinfo,
     // nav
     buyone,
@@ -45,6 +52,12 @@ export default new Router({
     reclassify,
     
     
+=======
+      menu,
+      Gbuying,
+
+
+>>>>>>> wei2
     {
       path:"**",
       redirect:"/shouye"
