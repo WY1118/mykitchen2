@@ -16,6 +16,9 @@ import returnmoney from "./shouye/nav/returnmoney.js";
 import setmeal from "./shouye/nav/setmeal.js";
 
 
+import reclassify from "./fenlei/reclassify/index.js";
+// import reclassify from "./fenlei/reclassify/index.js";
+
 Vue.use(Router)
 
 export default new Router({
@@ -28,6 +31,7 @@ export default new Router({
     fenlei,
     shopcar,
     mine,
+<<<<<<< HEAD
     goodsinfo,
     // nav
     buyone,
@@ -38,6 +42,12 @@ export default new Router({
     reduce20,
     returnmoney,
     setmeal,
+=======
+    
+    reclassify,
+    
+    
+>>>>>>> szj2
     {
       path:"**",
       redirect:"/shouye"
