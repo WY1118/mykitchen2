@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <router-view></router-view>
-    <TabBar/>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive> 
+    <TabBar v-if="this.$route.meta.tabbarFlag"/>
   </div>
 </template>
 
@@ -16,7 +18,7 @@ export default {
 </script>
 <style>
   #app{
-    height:100%;
+    height: 100%;
   }
 </style>
 

@@ -18,7 +18,11 @@ a { color:#666; text-decoration:none; }
 *{box-sizing:border-box}
 body,html{
     height: 100%;
+<<<<<<< HEAD
     /*overflow-x: hidden;*/
+=======
+    /* overflow: hidden; */
+>>>>>>> 9d1a2ac283f7ed606696cdcc98f76f5e103e0f49
 }
 html{
     font-size: 26.67vw;

@@ -1,4 +1,5 @@
 <template>
+<div class="footerBox">
   <div id="footer">
     <ul>
       <router-link tag="li" v-for="(item,index) in tabbar" :to="item.path">
@@ -7,6 +8,7 @@
       </router-link>
     </ul>
   </div>
+</div>
 </template>
 
 <script>
@@ -48,11 +50,12 @@ $color:#5d8640;
     width: 100%;
     height: 1rem;
     position: fixed;
+    padding: .08rem 0 .06rem;
     background: #fff;
     left: 0;
     bottom: 0;
     border-top:1px solid #ccc;
-    
+    z-index: 10;
     ul{
         width: 100%;
         height: 100%;
@@ -83,7 +86,4 @@ $color:#5d8640;
     font-size: .42rem;
     text-align: center;
 }
-
-
-
 </style>
