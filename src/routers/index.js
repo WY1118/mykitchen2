@@ -31,7 +31,6 @@ export default new Router({
     fenlei,
     shopcar,
     mine,
-<<<<<<< HEAD
     goodsinfo,
     // nav
     buyone,
@@ -42,12 +41,10 @@ export default new Router({
     reduce20,
     returnmoney,
     setmeal,
-=======
     
     reclassify,
     
     
->>>>>>> szj2
     {
       path:"**",
       redirect:"/shouye"
