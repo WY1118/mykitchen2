@@ -1076,6 +1076,7 @@ export default {
       this.i = v;
       this.arr = this.data.categories[this.i].goods;
       // 深拷贝
+      
       this.arr2 = JSON.parse(JSON.stringify(this.arr))
     },
     backOne() {
