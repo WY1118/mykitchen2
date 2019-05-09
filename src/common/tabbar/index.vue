@@ -1,7 +1,7 @@
 <template>
   <div id="footer">
     <ul>
-      <router-link tag="li" v-for="(item,index) in tabbar" :to="item.path">
+      <router-link tag="li" v-for="(item,index) in tabbar" :to="item.path" :key="index">
         <i class="iconfont" v-html="item.icon"></i>
         <span>{{item.title}}</span>
       </router-link>
