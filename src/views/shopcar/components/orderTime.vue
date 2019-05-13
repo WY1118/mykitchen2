@@ -1,12 +1,16 @@
 <template>
-    <section class="order-time-box">
-        <div class="oreder-time-title">
-            <img :src="titleImg" alt="">
-            <span>配送时间:&nbsp;</span>
-            <div class="title-time">4/26周五&nbsp;08:00-11:30</div>
-            <div class="title-gochange">去修改 &gt;</div>
-        </div>
-    </section>
+    <div>
+        <div class="un-look"></div>
+        <section class="order-time-box">
+            <div class="oreder-time-title">
+                <img :src="titleImg" alt="">
+                <span>配送时间:&nbsp;</span>
+                <div class="title-time">4/26周五&nbsp;08:00-11:30</div>
+                <div class="title-gochange">去修改 &gt;</div>
+            </div>
+        </section>
+    </div>
+
 </template>
 <script>
 export default {
@@ -19,6 +23,15 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+
+    .un-look::after{
+        /*占位符*/
+        height:.9rem;
+        content: "";
+        display: block;
+        clear: both;
+        visibility: hidden;
+    }
 .order-time-box{
     display: flex;
     align-items: center;

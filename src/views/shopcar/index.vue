@@ -25,7 +25,8 @@
     <div v-else="userId">
       <unLogin></unLogin>
     </div>
-    <carGoodsTop></carGoodsTop>
+    <deliveryTime ></deliveryTime>
+    <!--<carGoodsTop></carGoodsTop>-->
   </div>
 </template>
 <script>
@@ -33,7 +34,9 @@
   import TradeIn from "./components/tradeIn";
   import carMain from "./components/carMain";
   import unLogin from "./components/unLogin";
+  import deliveryTime from "./components/deliveryTime";
   import Vue from "vue"
+  //推荐商品
   // import carGoodsTop from "./components/carGoodsTop";
   //这里使用了全局的过滤器
    Vue.filter("carPrice",(v)=>{return "￥" + v;})
@@ -45,7 +48,11 @@ export default {
       left : "float:left",
       carlocation : "img/carlocation.png",
       cardown:"img/cardown-arr.png",
-      carGoods:localStorage.goods,
+      //是否显示配送时间
+      isDeliveryTime : false,
+      //是否有购物车
+      carGoods:true,
+      //是否登录
       userId:localStorage.userId
     }
   },
@@ -59,6 +66,7 @@ export default {
     orderTime,
     carMain,
     unLogin,
+    deliveryTime,
     carGoodsTop:resolve => {
       require(['./components/carGoodsTop.vue'],resolve)
     }
