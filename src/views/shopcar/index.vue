@@ -16,7 +16,8 @@
           </div>
         </header>
         <section class="main-body">
-          <orderTime></orderTime>
+
+          <orderTime :isDeliveryTime.sync="isDeliveryTime"></orderTime>
           <tradeIn></tradeIn>
           <carMain></carMain>
         </section>
@@ -25,8 +26,10 @@
     <div v-else="userId">
       <unLogin></unLogin>
     </div>
-    <deliveryTime ></deliveryTime>
-    <!--<carGoodsTop></carGoodsTop>-->
+    <!--修改送货时间的设置页面-->
+    <deliveryTime v-show="isDeliveryTime" :isDeliveryTime.sync="isDeliveryTime"></deliveryTime>
+    <carGoodsTop></carGoodsTop>
+
   </div>
 </template>
 <script>
@@ -85,6 +88,7 @@ export default {
     width:100%;
     height:100%;
   }
+
 .home{
   width:100%;
   /*height:100%;*/

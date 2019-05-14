@@ -1,12 +1,13 @@
 <template>
-    <div>
+    <!--头部配送时间组件-->
+    <div @click="$emit('update:isDeliveryTime',!isDeliveryTime)">
         <div class="un-look"></div>
         <section class="order-time-box">
             <div class="oreder-time-title">
                 <img :src="titleImg" alt="">
                 <span>配送时间:&nbsp;</span>
                 <div class="title-time">4/26周五&nbsp;08:00-11:30</div>
-                <div class="title-gochange">去修改 &gt;</div>
+                <div class="title-gochange" >去修改 &gt;</div>
             </div>
         </section>
     </div>
@@ -19,7 +20,9 @@ export default {
         return {
             titleImg : "img/time-icon.png"
         }
-    }
+    },
+    props:["isDeliveryTime"]
+
 }
 </script>
 <style scoped lang="scss">
