@@ -1,5 +1,4 @@
 <template>
-  <div class="goodsinfoBox">
     <div class="d-top">
       <div class="swiper">
         <div class="swiper-container swiper-container-goods" ref="goodsinfoSwiper">
@@ -20,131 +19,19 @@
               <img src="https://img.wochu.cn/upload/66a43444-7ad0-4724-ad27-7eee904eae9d.jpg" alt>
             </div>
           </div>
-          <!-- Add Pagination -->
           <div class="swiper-pagination swiper-pagination-goods"></div>
         </div>
       </div>
-      <!-- 返回上一层 -->
       <div class="d-refer" @click="back">
         <img src="http://wmall.wochu.cn/h5/mall/img/vueimg/refer.png" alt>
       </div>
     </div>
-    <!--  -->
-    <div class="d-main clear">
-      <div class="sign">
-        <img
-          src="https://wochu.oss-cn-hangzhou.aliyuncs.com/upload/93e16540-cc1a-4570-ac07-442bf5bc4126.png"
-          alt
-        >
-      </div>
-      <h1 class="ellipsis">
-        <span></span>
-        红烧小圆蹄450g
-      </h1>
-      <h2>走在乡间的小路上</h2>
-      <div class="price clear">
-        <div class="o-price">￥26.9</div>
-        <div class="m-price">￥34.9</div>
-      </div>
-      <div class="d-icon"></div>
-    </div>
-    <!--  -->
-    <div class="d-navigation">
-      <img src="http://wmall.wochu.cn/h5/mall/img/vueimg/navigation.png" alt>
-    </div>
-    <!--  -->
-    <div class="d-info">
-      <div class="condition">
-        <span>产地：</span>
-        上海
-      </div>
-      <div class="condition">
-        <span class="width-14">保质期：</span>
-        180天
-      </div>
-      <div class="condition condition-top">
-        <span>规格：</span>
-        450g
-      </div>
-      <div class="condition condition-top">
-        <span>储存条件：</span>
-        -25.0~-18.0°c
-      </div>
-    </div>
-    <!--  -->
-    <div class="d-rate clear">
-      <span>商品评价</span>
-      <img src="http://wmall.wochu.cn/h5/mall/img/vueimg/next.png" alt>
-    </div>
-    <!--  -->
-    <div class="d-advice-text">
-      <i></i>
-      <p>猜你喜欢</p>
-    </div>
-    <!--  -->
-    <div class="d-advice-info">
-      <Ilike></Ilike>
-    </div>
-    <!--  -->
-    <div class="detialMain">
-      <div>
-        <p>
-          <img src="https://img.wochu.cn/upload/82690166-dfbc-4b36-b8fc-7a79e7be323e.jpg">
-          <img src="https://img.wochu.cn/upload/4f1b5640-9875-4868-891f-80f51c991caa.jpg">
-          <img src="https://img.wochu.cn/upload/4b410b04-9a3a-4d59-924d-10e1fcc5ffc5.jpg">
-          <img src="https://img.wochu.cn/upload/b7bdc365-a9f2-40ad-b377-8dda8f2545f7.jpg">
-          <img src="https://img.wochu.cn/upload/8fea3709-1053-4559-bb2e-f1f408c22a3d.jpg">
-          <img src="https://img.wochu.cn/upload/d7d2ec1e-fbd9-482e-82fd-7ef9bb066617.jpg">
-        </p>
-      </div>
-    </div>
-    <!--  -->
-    <div class="cart">
-      <div class="cart-l">
-        <img src="http://wmall.wochu.cn/h5/mall/img/vueimg/catr.png" alt>
-        <span>1</span>
-      </div>
-      <div class="cart-r">加入购物车</div>
-      <div></div>
-    </div>
-    <!--  -->
-    <div class="cart-on" style="display: none;">加入购物车</div>
-    <!--  -->
-    <div class="pop" style="display: none;"></div>
-    <!--  -->
-    <div class="cart-info" style="display: none;">
-      <div class="close">
-        <img src="http://wmall.wochu.cn/h5/mall/img/vueimg/close.png" alt>
-      </div>
-      <img
-        alt
-        class="good"
-        src="https://img.wochu.cn/upload/93d29a16-752d-4a65-89e3-beded886c8b2.jpg"
-      >
-      <p>商品售价</p>
-      <div class="price">￥19.9</div>
-      <span>购买数量</span>
-      <div class="addmin">
-        <span class="min">
-          <img src="http://wmall.wochu.cn/h5/mall/img/vueimg/min1.png" alt>
-        </span>
-        <span class="min">
-          
-        </span>
-        <input type="text" maxlength="3">
-        <span class="add">
-          <img src="http://wmall.wochu.cn/h5/mall/img/vueimg/addreal.png" alt>
-        </span>
-      </div>
-    </div>
-  </div>
 </template>
 <script>
-import Ilike from "../components/xianshitehui/goodslist2.vue";
 export default {
   name: "goodsinfo",
   components: {
-    Ilike
+    
   },
   data() {
     return {};
@@ -155,6 +42,7 @@ export default {
     }
   },
   mounted() {
+    console.log(this.$refs.goodsinfoSwiper)
     var swiper = new Swiper(this.$refs.goodsinfoSwiper, {
       loop: true,
       autoplay: {
