@@ -1,6 +1,6 @@
 export default {
     path:"/returnmoney",
-    component:()=>import("@/views/shouye/nav/returnmoney"),
+    component:()=>import("@/components/shouye/homePage/navCon/components/returnmoney"),
     meta:{
         tabbarFlag:false
     },

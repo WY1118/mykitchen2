@@ -1,21 +1,34 @@
 <template>
-  <!-- 轮播图 -->
-  <div class="swiper-container" ref="swiperlunbo">
-    <div class="swiper-wrapper" v-for="(val,index) in lists" :key="index">
-      <div class="swiper-slide" v-for="(item,index) in val.data.carousel" :key="index">
-        <a href="#"><img :src="item.picUrl"></a>
-      </div>
+  <div class="clear navbox">
+    <div class="top-nav" v-for="(val,index1) in lists" :key="index1">
+      <ul v-for="(item,index2) in val.data.recommendedContent" :key="index2">
+        <router-link
+          v-for="(item2,index3) in item.items"
+          :key="index3"
+          tag="li"
+          :to="paths[index2][index3]"
+        >
+          <a href="">
+            <img :src="item2.imgUrl">
+          </a>
+        </router-link>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </ul>
     </div>
-    <!-- 如果需要分页器 -->
-    <div class="swiper-pagination swiper-pagination-clickable"></div>
   </div>
 </template>
 <script>
 export default {
-  name: "lunbo",
+  name: "navcon",
   components: {},
   data() {
     return {
+      paths: [
+        ["/buyone", "/setmeal", "/onegroup", "/cleanvegetables"],
+        ["/returnmoney", "/reduce20", "/redpacket", "/newproduct"]
+      ],
       lists: [
         {
           hasError: false,
@@ -23,71 +36,6 @@ export default {
           statusCode: "200",
           errorMessage: "",
           data: {
-            carousel: [
-              {
-                title: "轮播",
-                picUrl:
-                  "https://img.wochu.cn/upload/c6a28103-4e8d-419e-9871-02344b8c15d2.jpg",
-                enabled: 1,
-                sortIndex: 2,
-                sortIndexDes: "水果",
-                action: {
-                  type: 2,
-                  data: {
-                    type: 1,
-                    target:
-                      "https://wmall.wochu.cn/h5/activityTemplate/html/newActivityTemplatew.html?activityId=69"
-                  }
-                }
-              },
-              {
-                title: "轮播",
-                picUrl:
-                  "https://img.wochu.cn/upload/d47e1894-00c3-4fab-8f13-a8d28e294937.jpg",
-                enabled: 1,
-                sortIndex: 3,
-                sortIndexDes: "团购",
-                action: {
-                  type: 2,
-                  data: {
-                    type: 1,
-                    target: "https://wmall.wochu.cn/h5/tg/groupList.html"
-                  }
-                }
-              },
-              {
-                title: "轮播",
-                picUrl:
-                  "https://img.wochu.cn/upload/29502e76-fbdc-4c2a-9627-c35cacb55a6a.gif",
-                enabled: 1,
-                sortIndex: 4,
-                sortIndexDes: "指南",
-                action: {
-                  type: 2,
-                  data: {
-                    type: 1,
-                    target:
-                      "https://wmall.wochu.cn/h5/activityTemplate/html/newActivityTemplatew.html?activityId=67"
-                  }
-                }
-              },
-              {
-                title: "轮播",
-                picUrl:
-                  "https://img.wochu.cn/upload/ca8241a9-444c-4161-98f1-dc2cf1dd7717.gif",
-                enabled: 1,
-                sortIndex: 5,
-                sortIndexDes: "菜园",
-                action: {
-                  type: 2,
-                  data: {
-                    type: 1,
-                    target:
-                      "https://wmall.wochu.cn/h5/activityTemplate/html/newActivityTemplatew.html?activityId=65"
-                  }
-                }
-              }
-            ],
             recommendedContent: [
               {
                 items: [
@@ -193,46 +141,30 @@ export default {
         }
       ]
     };
-  },
-  mounted() {
-    var mySwiper = new Swiper(this.$refs.swiperlunbo, {
-      loop: true, // 循环模式选项
-      autoplay: {
-        //自动滚动
-        disableOnInteraction: false
-      },
-      // 如果需要分页器
-      pagination: {
-        el: ".swiper-pagination"
-      }
-    });
   }
 };
 </script>
-<style>
-/* 轮播 */
-.swiper-container {
+<style scoped>
+/* 导航 */
+.navbox{
   width: 100%;
-  height: 3.32rem;
+  height: 4.36rem;
 }
-.swiper-container img {
-  width: 100%;
-  height: 100%;
+.top-nav ul {
+  padding: 0.14rem 0 0.2rem 0.14rem;
+  float: left;
 }
-.swiper-pagination-clickable{
-  width:100%;
-  height:1.12rem;
-  text-align: center;
-  line-height:1.12rem;
-  font-size: .5rem;
+.top-nav ul li {
+  width: 1.7rem;
+  height: 1.7rem;
+  margin: 0 0.14rem 0.14rem 0;
+  float: left;
 }
-.swiper-pagination-bullet-active {
-    width: .16rem;
-    height: .16rem;
-    background: #fff;
+a {
+  display: inline-block;
 }
-.swiper-pagination-bullet {
-    width: .16rem;
-    height: .16rem;
+.top-nav ul li img {
+  width: 1.7rem;
+  height: 1.7rem;
 }
 </style>

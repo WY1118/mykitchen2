@@ -1,6 +1,6 @@
 export default {
     path:"/buyone",
-    component:()=>import("@/views/shouye/nav/buyone"),
+    component:()=>import("@/components/shouye/homePage/navCon/components/buyone"),
     meta:{
         tabbarFlag:false
     },

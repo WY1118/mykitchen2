@@ -1,6 +1,6 @@
 export default {
     path:"/goodsinfo",
-    component:()=>import("@/views/shouye/goodsInfo"),
+    component:()=>import("@/components/shouye/detailPages/goodsInfo/index.vue"),
     meta:{
         tabbarFlag:false
     },
