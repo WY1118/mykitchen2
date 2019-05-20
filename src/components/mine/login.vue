@@ -68,7 +68,7 @@ export default {
 .top img{
   display: block;
   width: 100%;
-  height: 8;
+  height: 8rem;
 }
 .login {
   background: #fff;

@@ -295,16 +295,22 @@ body {
   justify-content: space-around;
 }
 .shouhuo ul li {
-  width: 20%;
+  height:1.5rem;
+  width: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background:red; */
   color: #999;
   font-size: 0.24rem;
-  margin-top: 0.45rem;
-  margin-left: 0.3rem;
+  margin-top: 0.3rem
+  /* margin-top: 0.45rem;
+  margin-left: 0.3rem; */
 }
 .shouhuo ul li:last-child {
-  height: 1.1rem;
+  /* height: 1.1rem; */
   border-left: 1px solid #000;
-  padding-left: 0.3rem;
+  /* padding-left: 0.3rem; */
 }
 .shouhuo ul li p {
   margin-top: 0.2rem;
@@ -324,17 +330,26 @@ body {
   top: 7.65rem;
 }
 .tgou ul li {
-  width: 25%;
-  padding: 0.3rem 0;
+  height: 1.5rem;
+  width: 1.5rem;
+  /* background: red; */
+  /* padding: 0.3rem 0; */
   color: #999;
   font-size: 0.24rem;
-  float: left;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-around; */
+  margin-left: 0.3rem;
+  margin-top: 0.2rem
+  /* float: left;
+  text-align: center; */
 }
 .tgou ul li img {
-  margin-left: 0.5rem;
+  /* margin-left: 0.5rem;
   margin-top: -0.1rem;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.1rem; */
+   margin-bottom: 0.1rem;
   display: block;
   width: 0.8rem;
   height: 0.8rem;
@@ -352,27 +367,35 @@ body {
   border-top: 1px solid #ccc;
 }
 .help ul li {
-  margin-top: -0.1rem;
-  width: 25%;
-  padding: 0.3rem 0;
+  /* margin-top: -0.1rem; */
+  height: 1.5rem;
+  width: 1.5rem;
+  /* background: red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.2rem;
+  /* padding: 0.3rem 0; */
   color: #999;
   font-size: 0.24rem;
-  text-align: center;
+  /* text-align: center; */
 }
 .help li img {
-  margin-left: 0.55rem;
-  margin-bottom: 0.1rem;
+  /* margin-left: 0.55rem;
+  */
+   margin-bottom: 0.2rem;
 }
 .help li p {
-  margin-left: 0.15rem;
+  /* margin-left: 0.15rem; */
 }
 .invite img {
   width: 95%;
+ 
   margin-top: -0.45rem;
   margin-left: 0.2rem;
   height: 1.6rem;
 }
-.invite {
+/* .invite {
   border-top: 1px solid #cccccc;
-}
+} */
 </style>

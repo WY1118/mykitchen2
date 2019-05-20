@@ -10,7 +10,7 @@
     </div>
     <div>
       
-      <ul class="all_list">
+      <ul class="all-list">
         <!-- <li
           v-for="(item,index) in all_list"
           :class="{all_active:current==index}"
@@ -20,10 +20,10 @@
           {{item.tit}}
           <div>{{item.tab}}</div>
         </li> -->
-        <li @click="tabChange('all');"  >全部</li>
-        <li  @click="tabChange('pay');" >待付款 </li>
-        <li  @click="tabChange('shop');"  >待收货</li>
-        <li  @click="tabChange('evaluate');"  >待评价</li>
+        <li @click="tabChange('all');">全部</li>
+        <li  @click="tabChange('pay');">待付款 </li>
+        <li  @click="tabChange('shop');">待收货</li>
+        <li  @click="tabChange('evaluate');">待评价</li>
       </ul>
       <div :is="currentView" ></div>
       
@@ -138,7 +138,7 @@ body {
   color: #001e00;
   /* background: #fff; */
  
-.all_list {
+.all-list {
   height: 0.9rem;
   width: 100%;
   display: flex;
@@ -155,7 +155,7 @@ body {
   color: #6eb042;
   border-bottom: 0.04rem solid #6eb042;
 }
-.all_list li {
+.all-list li {
   
   height: 1rem;
   width: 25%;
