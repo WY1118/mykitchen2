@@ -1,6 +1,6 @@
 export default {
     path:"/cleanvegetables",
-    component:()=>import("@/views/shouye/nav/cleanvegetables"),
+    component:()=>import("@/components/shouye/homePage/navCon/components/cleanvegetables"),
     meta:{
         tabbarFlag:false
     },

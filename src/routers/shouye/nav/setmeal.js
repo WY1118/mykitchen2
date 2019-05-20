@@ -1,6 +1,6 @@
 export default {
     path:"/setmeal",
-    component:()=>import("@/views/shouye/nav/setmeal"),
+    component:()=>import("@/components/shouye/homePage/navCon/components/setmeal"),
     meta:{
         tabbarFlag:false
     },

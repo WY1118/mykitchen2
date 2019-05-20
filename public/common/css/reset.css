@@ -10,7 +10,7 @@ address, caption, cite, code, dfn, th, var { font-style:normal; font-weight:norm
 
 ul, ol ,li{ list-style:none; }
 
-body { color:#333; font:12px "SimSun","宋体","Arial Narrow",HELVETICA; background:#f4f4f4;}
+body { color:#333; font:12px "SimSun","宋体","Arial Narrow",HELVETICA; background:#fff;}
 
 a { color:#666; text-decoration:none; }
 /*清除浮动*/
@@ -18,11 +18,7 @@ a { color:#666; text-decoration:none; }
 *{box-sizing:border-box}
 body,html{
     height: 100%;
-<<<<<<< HEAD
     /*overflow-x: hidden;*/
-=======
-    /* overflow: hidden; */
->>>>>>> 9d1a2ac283f7ed606696cdcc98f76f5e103e0f49
 }
 html{
     font-size: 26.67vw;
