@@ -6,7 +6,9 @@
         <p>
           <img src="http://wmall.wochu.cn/h5/personal/img/cust-icon-defualt.png" alt>
         </p>
-        <span>123****4567</span>
+        <router-link :to="{name:'login'}" ><span>User</span></router-link>
+        <router-view></router-view>
+        <!-- <span>{{this.$router.name}}</span> -->
       </div>
     </div>
     <div class="zhanghu">
@@ -32,36 +34,36 @@
     </div>
     <div class="shouhuo">
       <ul>
-         <!--<li v-for="item in shouhuo">-->
-        <router-link to="menu" tag = "li" v-for="item in shouhuo" >
+        <!--<li v-for="item in shouhuo">-->
+        <router-link to="menu" tag="li" v-for="(item,index) in shouhuo" :key="index">
           <img :src="item.img">
           <p>{{item.tit}}</p>
         </router-link>
-          <router-view></router-view>
+        <router-view></router-view>
       </ul>
-
     </div>
     <div class="tgou">
       <ul>
-        <router-link to="Gbuying" tag = "li" v-for="item in tg" >
-          <img :src="item.img" alt>
-          <p>{{item.tit}}</p>
+        <router-link to="Gbuying" tag="li" v-for="(i,index) in tg" :key="index" >
+          <img :src="i.img1" alt>
+          <p>{{i.tit1}}</p>
         </router-link>
         <router-view></router-view>
       </ul>
     </div>
     <div class="help">
       <ul>
-        <li v-for="item in help" :key="item">
-          <img :src="item.img" alt>
-          <p>{{item.tit}}</p>
-        </li>
+        <router-link v-for="(j,index) in help" :key="index" to="help" tag="li">
+          <img :src="j.img2" alt>
+          <p>{{j.tit2}}</p>
+        </router-link> 
+        <router-view></router-view>
       </ul>
     </div>
     <div class="invite">
       <a href>
         <img
-          src="https://wochu.oss-cn-hangzhou.aliyuncs.com/upload/90d9359c-1365-418a-9aee-e0f248a997df.jpg"
+          src="https://wochu.oss-cn-hangzhou.aliyuncs.com/upload/55b93ad6-c0df-4e6f-bbcd-eaaad88630c1.gif"
           alt
         >
       </a>
@@ -70,9 +72,31 @@
 </template>
 
 <script>
+import axios from "axios"
 export default {
+  // created () {
+  //   axios.get("api/api/event/GetMbBannerList").then((data)=>{
+  //     console.log(data)
+  //   })
+  // },
   name: "mine",
   components: {},
+  methods: {
+    // post:function(){
+    //   axios.post("https://web-api.poco.cn/v1_1/rank/get_wap_homepage_info",{
+    //     userName:"111"
+    //   },{
+    //     headers:{
+    //       token:"tom"
+    //     }
+    //   }).then(res=>{
+    //     this.msg=res.data;
+    //     console.log(res.data)
+    //   }).catch(function(error){
+
+    //   })
+    // }
+  },
   data() {
     return {
       shouhuo: [
@@ -99,38 +123,38 @@ export default {
       ],
       tg: [
         {
-          img: "http://wmall.wochu.cn/h5/personal/img/mytg@3x.png",
-          tit: "我的团购"
+          img1: "http://wmall.wochu.cn/h5/personal/img/mytg@3x.png",
+          tit1: "我的团购"
         },
         {
-          img: "http://wmall.wochu.cn/h5/personal/img/location@3x.png",
-          tit: "收货地址"
+          img1: "http://wmall.wochu.cn/h5/personal/img/location@3x.png",
+          tit1: "收货地址"
         },
         {
-          img: "http://wmall.wochu.cn/h5/personal/img/favorite@3x.png",
-          tit: "我的收藏"
+          img1: "http://wmall.wochu.cn/h5/personal/img/favorite@3x.png",
+          tit1: "我的收藏"
         },
         {
-          img: "http://wmall.wochu.cn/h5/personal/img/aboutus@3x.png",
-          tit: "关于我厨"
+          img1: "http://wmall.wochu.cn/h5/personal/img/aboutus@3x.png",
+          tit1: "关于我厨"
         }
       ],
       help: [
         {
-          img: "http://wmall.wochu.cn/h5/personal/img/help@3x.png",
-          tit: "帮助中心"
+          img2: "http://wmall.wochu.cn/h5/personal/img/help@3x.png",
+          tit2: "帮助中心"
         },
         {
-          img: "http://wmall.wochu.cn/h5/personal/img/yjfk@3x.png",
-          tit: "意见反馈"
+          img2: "http://wmall.wochu.cn/h5/personal/img/yjfk@3x.png",
+          tit2: "意见反馈"
         },
         {
-          img: "http://wmall.wochu.cn/h5/personal/img/setup@3x.png",
-          tit: "设置中心"
+          img2: "http://wmall.wochu.cn/h5/personal/img/setup@3x.png",
+          tit2: "设置中心"
         },
         {
-          img: "http://wmall.wochu.cn/h5/personal/img/kefu@3x.png",
-          tit: "客服电话"
+          img2: "http://wmall.wochu.cn/h5/personal/img/kefu@3x.png",
+          tit2: "客服电话"
         }
       ]
     };
@@ -164,6 +188,7 @@ body {
   font-size: 0.24rem;
   color: #fff;
   font-weight: 600;
+ margin-left: 0.2rem!important
 }
 .zhanghu {
   position: absolute;
@@ -270,20 +295,32 @@ body {
   justify-content: space-around;
 }
 .shouhuo ul li {
-  width: 20%;
+  height: 1.5rem;
+  width: 1.5rem;
+  /* background: red; */
   color: #999;
   font-size: 0.24rem;
-  margin-top: 0.45rem;
-  margin-left: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.2rem
+  /* margin-top: 0.45rem;
+  margin-left: 0.3rem; */
 }
 .shouhuo ul li:last-child {
-  height: 1.1rem;
+  /* height: 1.1rem; */
   border-left: 1px solid #000;
-  padding-left: 0.3rem;
+  /* padding-left: 0.3rem; */
 }
 .shouhuo ul li p {
   margin-top: 0.2rem;
   margin-left: -0.1rem;
+}
+.shouhuo ul li img{
+  display: block;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-bottom: 0.2rem
 }
 .tgou ul {
   display: flex;
@@ -294,17 +331,25 @@ body {
   top: 7.65rem;
 }
 .tgou ul li {
-  width: 25%;
+  height: 1.5rem;
+  width: 1.5rem;
+  /* background: red; */
   padding: 0.3rem 0;
   color: #999;
   font-size: 0.24rem;
-  float: left;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 0.3rem;
+  margin-top: -0.1rem
 }
 .tgou ul li img {
-  margin-left: 0.5rem;
-  margin-top: -0.1rem;
-  margin-bottom: 0.1rem;
+  /* margin-left: 0.5rem;
+  margin-top: -0.1rem; */
+   margin-bottom: 0.15rem; 
+  display: block;
+  width: 0.8rem;
+  height: 0.8rem;
 }
 .help ul {
   display: flex;
@@ -320,25 +365,29 @@ body {
 }
 .help ul li {
   margin-top: -0.1rem;
-  width: 25%;
+  height: 1.5rem;
+  width: 1.5rem;
+  /* background: red; */
   padding: 0.3rem 0;
   color: #999;
   font-size: 0.24rem;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+   margin-left: 0.05rem 
+ 
 }
 .help li img {
-  margin-left: 0.55rem;
-  margin-bottom: 0.1rem;
+  /* margin-left: 0.55rem; */
+  margin-bottom: 0.15rem;
 }
-.help li p {
-  margin-left: 0.15rem;
-}
+/* .help li p {
+  /* margin-left: 0.15rem; */
+
 .invite img {
   width: 95%;
   margin-top: -0.45rem;
   margin-left: 0.2rem;
-}
-.invite {
-  border-top: 1px solid #cccccc;
+  height: 1.6rem;
 }
 </style>

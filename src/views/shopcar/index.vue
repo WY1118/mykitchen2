@@ -22,7 +22,7 @@
         </section>
       </div>
     </div>
-    <div v-else="userId">
+    <div v-else-if="userId">
       <unLogin></unLogin>
     </div>
     <carGoodsTop></carGoodsTop>
