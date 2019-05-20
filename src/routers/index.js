@@ -15,8 +15,22 @@ import reduce20 from "./shouye/nav/reduce20.js";
 import returnmoney from "./shouye/nav/returnmoney.js";
 import setmeal from "./shouye/nav/setmeal.js";
 
+// 跳二级
+import Optimization from "./fenlei/reclassify/Optimization.js";
+import Dishes from "./fenlei/reclassify/Dishes.js"
+import Cleanvegetable from "./fenlei/reclassify/Cleanvegetable.js"
+import Children from "./fenlei/reclassify/Children.js"
+import Vegetables from "./fenlei/reclassify/Vegetables.js"
+import Fruits from "./fenlei/reclassify/Fruits.js"
+import Egg from "./fenlei/reclassify/Egg.js"
+import Seafood from "./fenlei/reclassify/Seafood.js"
+import Point from "./fenlei/reclassify/Point.js"
+import Snack from "./fenlei/reclassify/Snack.js"
+import Staplefood from "./fenlei/reclassify/Staplefood.js"
 
-import reclassify from "./fenlei/reclassify/index.js";
+import NetWork from "./fenlei/recommnd/NetWork.js"
+
+
 // import reclassify from "./fenlei/reclassify/index.js";
 import menu from "./mine/menu/menu.js";
 import Gbuying from "./mine/Gbuying/Gbuying.js";
@@ -45,8 +59,19 @@ export default new Router({
     returnmoney,
     setmeal,
     
-    reclassify,
-    
+    Optimization,
+    Dishes,
+    Cleanvegetable,
+    Children,
+    Vegetables,
+    Fruits,
+    Egg,
+    Seafood,
+    Point,
+    Snack,
+    Staplefood,
+
+    NetWork,
     
       menu,
       Gbuying,

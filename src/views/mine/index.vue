@@ -33,7 +33,7 @@
     <div class="shouhuo">
       <ul>
          <!--<li v-for="item in shouhuo">-->
-        <router-link to="menu" tag = "li" v-for="item in shouhuo" >
+        <router-link to="menu" tag = "li" v-for="item in shouhuo" :key="item">
           <img :src="item.img">
           <p>{{item.tit}}</p>
         </router-link>
@@ -43,7 +43,7 @@
     </div>
     <div class="tgou">
       <ul>
-        <router-link to="Gbuying" tag = "li" v-for="item in tg" >
+        <router-link to="Gbuying" tag = "li" v-for="item in tg" :key="item">
           <img :src="item.img" alt>
           <p>{{item.tit}}</p>
         </router-link>
