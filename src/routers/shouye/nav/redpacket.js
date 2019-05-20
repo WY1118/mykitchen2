@@ -1,6 +1,6 @@
 export default {
     path:"/redpacket",
-    component:()=>import("@/views/shouye/nav/redpacket"),
+    component:()=>import("@/components/shouye/homePage/navCon/components/redpacket"),
     meta:{
         tabbarFlag:false
     },
