@@ -1,16 +1,142 @@
 <template>
   <div class="home">
-    购物车
+    <div class="car-User" v-if="userId">
+      <div class="exGoods" v-if="carGoods">
+        <header>
+          <div class="header-top">
+            <div id="carback" :stlye="left" @click="carBack">
+              <img :src="back">
+            </div>
+            <div id="carlocation">
+              <img :src="carlocation" alt="" :style="left">
+              <span>请填写地址</span>
+              <img :src="cardown" alt="">
+            </div>
+            <div class="redact">编辑</div>
+          </div>
+        </header>
+        <section class="main-body">
+          <orderTime></orderTime>
+          <tradeIn></tradeIn>
+          <carMain></carMain>
+        </section>
+      </div>
+    </div>
+    <div v-else-if="userId">
+      <unLogin></unLogin>
+    </div>
+    <carGoodsTop></carGoodsTop>
   </div>
 </template>
-
 <script>
-
-
+  import orderTime from './components/orderTime.vue';
+  import TradeIn from "./components/tradeIn";
+  import carMain from "./components/carMain";
+  import unLogin from "./components/unLogin";
+  import Vue from "vue"
+  // import carGoodsTop from "./components/carGoodsTop";
+  //这里使用了全局的过滤器
+   Vue.filter("carPrice",(v)=>{return "￥" + v;})
 export default {
   name: 'shopcar',
+  data(){
+    return {
+      back : "img/carback.png",
+      left : "float:left",
+      carlocation : "img/carlocation.png",
+      cardown:"img/cardown-arr.png",
+      carGoods:localStorage.goods,
+      userId:localStorage.userId
+    }
+  },
+  methods:{
+    carBack(){
+      this.$router.go(-1);
+    }
+  },
   components: {
-   
+    TradeIn,
+    orderTime,
+    carMain,
+    unLogin,
+    carGoodsTop:resolve => {
+      require(['./components/carGoodsTop.vue'],resolve)
+    }
   }
 }
 </script>
+
+<style scoped lang="scss">
+  body, ol, ul, li, h1, h2, h3, h4, h5, h6, p, th, td, dl, dd, dt, form, fieldset, legend, input, textarea, select {
+    margin: 0;
+    padding: 0;
+    color: #333;
+    outline: none;
+  }
+  html,body{
+    width:100%;
+    height:100%;
+  }
+.home{
+  width:100%;
+  /*height:100%;*/
+  background:#f4f5f6;
+  font-family: "微软雅黑";
+}
+  header{
+    width:100%;
+    position: fixed;
+    top:0;
+    left:0;
+    .header-top{
+      width:100%;
+      display: flex;
+      align-items: center;
+      background:#fff;
+      line-height:.88rem;
+      height:.88rem;
+      margin-bottom:.02rem;
+      #carback{
+        margin-left:.28rem;
+        width:.8rem;
+        height:.88rem;
+        position: relative;
+        >img{
+          position:absolute;
+          top:.34rem;
+          left:0;
+        }
+      }
+      #carlocation{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        line-height: .88rem;
+        height:.88rem;
+        width:3.4rem;
+        margin-left:1rem;
+        >span{
+          font-size:.28rem;
+          color:#333;
+        }
+        >img{
+          float:left;
+          height:.3rem;
+          width:auto;
+        }
+      }
+      .redact{
+        float:right;
+        margin-left:1.04rem;
+        font-size:.26rem;
+        color:#666;
+      }
+    }
+  }
+  .main-body{
+    height:auto;
+    width:100%;
+    background:#f4f5f7;
+    overflow-y: scroll;
+  }
+</style>
