@@ -36,10 +36,7 @@ import NetWork from "./fenlei/recommnd/NetWork.js"
 // import reclassify from "./fenlei/reclassify/index.js";
 import menu from "./mine/menu/menu.js";
 import Gbuying from "./mine/Gbuying/Gbuying.js";
-
-
 Vue.use(Router)
-
 export default new Router({
   routes: [
     {
@@ -60,7 +57,10 @@ export default new Router({
     reduce20,
     returnmoney,
     setmeal,
-    
+    help,
+    menu,
+    Gbuying,
+    Login,
     Optimization,
     Dishes,
     Cleanvegetable,
@@ -72,17 +72,7 @@ export default new Router({
     Point,
     Snack,
     Staplefood,
-
     NetWork,
- 
-    help,
-    menu,
-    Gbuying,
-    Login,
-    
-    
-      menu,
-      Gbuying,
 
 
     {

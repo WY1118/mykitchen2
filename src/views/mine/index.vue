@@ -378,6 +378,9 @@ body {
  
 }
 .help li img {
+  display: block;
+   width: 0.8rem;
+  height: 0.8rem;
   /* margin-left: 0.55rem; */
   margin-bottom: 0.15rem;
 }
