@@ -2,14 +2,14 @@
     <section class="car-goodsTop">
         <div class="car-goodsTop-title"></div>
         <ul class="car-goodsTop-list">
-            <li class="goodsTop-list-item" v-for="item in carImgInfo">
-                <div class="item-img"><img :src="item.img" alt=""></div>
+            <li class="goodsTop-list-item" v-for="item in $store.state.shopCar.topGoodsList">
+                <div class="item-img"><img :src="'http://127.0.0.1/'+item.goodsSmallPic" alt=""></div>
                 <div class="item-info">
                     <p class="item-info-title">{{item.goodsInfo}}</p>
                     <div class="item-info-main">
                         <div class="item-info-price">
-                            <del class="carGoodsTop-old">{{item.oldGoodsPrice | carPrice}}</del>
-                            <span class="carGoodsTop-new">{{item.newGoodsPrice | carPrice}}</span>
+                            <del class="carGoodsTop-old">{{item.originalPrice | carPrice}}</del>
+                            <span class="carGoodsTop-new">{{item.currentPrice | carPrice}}</span>
                         </div>
                         <div class="item-info-add"></div>
                     </div>
@@ -87,6 +87,10 @@
                 ]
             }
         },
+        mounted(){
+            this.$store.dispatch("getGoodsList")
+            console.log(this.$store.state.shopCar)
+        },
 
     }
 </script>
@@ -101,7 +105,7 @@
             margin-bottom: .3rem;
             width: 4.72rem;
             height: .3rem;
-            background:url('../recommend.png') center/100%;
+            background:url('../../views/shopcar/recommend.png') center/100%;
         }
         .car-goodsTop-list{
             width:6.92rem;
@@ -163,7 +167,7 @@
                         margin: 0;
                         width: .5rem;
                         height: .5rem;
-                        background: url('../add_cart.png');
+                        background: url('../../views/shopcar/add_cart.png');
                         background-size: 100%;
                     }
                 }
