@@ -8,13 +8,13 @@
         </div>
         <div class="all">
             <ul class="all_list">
-               <router-link tag="li" v-for="(item,index) in all_list" @click="addClass(index)" :class="{all_active:index==current}" to="item.path">{{item.tit}}</router-link>
+               <router-link tag="li" v-for="(item,index) in all_list" @click="addClass(index)" :class="{all_active:index==current}" to="item.path" :key="index">{{item.tit}}</router-link>
                 <router-vier></router-vier>
             </ul>
         </div>
 
         <div class="shop">
-            <div class="shop_menu" v-for="(item,index) in shop_menu">
+            <div class="shop_menu" v-for="(item,index) in shop_menu" :key="index">
                 <div class="shop_top">
                     <p>{{item.time}}</p>
                     <span>{{item.state}}</span>
