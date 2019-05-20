@@ -14,6 +14,8 @@ import redpacket from "./shouye/nav/redpacket.js";
 import reduce20 from "./shouye/nav/reduce20.js";
 import returnmoney from "./shouye/nav/returnmoney.js";
 import setmeal from "./shouye/nav/setmeal.js";
+import help from "./mine/menu/help.js";
+import Login from "./mine/login/login";
 
 // 跳二级
 import Optimization from "./fenlei/reclassify/Optimization.js";
@@ -72,6 +74,12 @@ export default new Router({
     Staplefood,
 
     NetWork,
+ 
+    help,
+    menu,
+    Gbuying,
+    Login,
+    
     
       menu,
       Gbuying,
