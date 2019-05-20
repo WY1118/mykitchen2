@@ -33,8 +33,8 @@
 </template>
 
 <script>
-import Recommend from './component/recommend';
-import Other from './component/other';
+import Other from '../../components/fenlei/other';
+import Recommend from '../../components/fenlei/recommend'
 
 export default {
   name: 'fenlei',
@@ -47,15 +47,11 @@ export default {
   methods: {
     fn(v){
       this.i = v;
-      // console.log(b)
     }
   },
   components: {
-    Recommend,
-    Other
-    
-  },
-  
+    Recommend,    Other
+  }
 }
 </script>
 
@@ -69,6 +65,7 @@ export default {
   .header{
     width: 100%;
     position: absolute;
+    background: #fff
   }
   .search{
     width: 7.1rem;
@@ -147,8 +144,8 @@ export default {
     right: 0;
     top: 1.08rem;
     bottom: 1.08rem;
-    overflow: hidden;
+    overflow: auto;
     border-left: .01rem solid #e5e5e5;
-    // background: yellow
+    background: #fff
   }
 </style>
