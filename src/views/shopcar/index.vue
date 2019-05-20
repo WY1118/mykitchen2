@@ -23,7 +23,7 @@
         </section>
       </div>
     </div>
-    <div v-else="userId">
+    <div v-else-if="userId">
       <unLogin></unLogin>
     </div>
     <!--修改送货时间的设置页面-->

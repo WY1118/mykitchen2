@@ -1,5 +1,5 @@
 export default{
     path:"/Gbuying",
-    component:()=>import("@/views/mine/Gbuying"),
-name:"menu"
+    component:()=>import("@/components/mine/Gbuying"),
+    name:"Gubying"
 }

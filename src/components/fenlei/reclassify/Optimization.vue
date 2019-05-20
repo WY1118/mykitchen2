@@ -40,7 +40,7 @@
         <span>
           价格
           <em>
-            <img src="../../img/icon-fenlei-arrow@3x.png" alt>
+            <img src="../../../../public/img/icon-fenlei-arrow@3x.png" id="pic">
           </em>
         </span>
       </div>
@@ -49,9 +49,7 @@
     <!-- 内容 -->
     <section class="goods-list">
       <ul class="goods-ul" id="scroller">
-        <!-- <div class="class-item" v-for="(item,index) in categories" :key="index" v-if=""> -->
         <div class="class-item">
-          <!-- <li v-for="(ite,num) in data.categories[i].goods" :key="num"> -->
           <li v-for="(ite,num) in data.categories[i].goods" :key="num">
             <div class="fl">
               <img :src="ite.picUrl" alt>
@@ -65,7 +63,7 @@
                 <span class="old-price">￥{{ite.marketPrice}}</span>
               </div>
               <div class="addTo-cart">
-                <img src="../../img/icon-listcart-75@3x.png" alt>
+                <img src="../../../../public/img/icon-listcart-75@3x.png" alt>
               </div>
             </div>
           </li>
@@ -1075,36 +1073,48 @@ export default {
     fn(v) {
       this.i = v;
       this.arr = this.data.categories[this.i].goods;
-      // 深拷贝
-      
+      // 深拷贝  
       this.arr2 = JSON.parse(JSON.stringify(this.arr))
     },
+    // 返回
     backOne() {
       this.$router.back();
     },
+    //价格升序降序
     pricesort(orderType) {
       if(orderType==this.orderType){
+        // 每点击一次orderType++
         this.orderType=orderType;
         this.orderType++;
+        // 奇数
         if(orderType%2==1){
           this.data.categories[this.i].goods = this.arr;
           this.arr.sort(function(a,b){
               return a.price-b.price;
           })
-        }else if(orderType%2==0){
+        }
+        // 偶数
+        else if(orderType%2==0){
           this.data.categories[this.i].goods = this.arr;
           this.arr.sort(function(a,b){
               return b.price-a.price;
           })
         }
-
+      // 恢复默认排序
       }else if(orderType===0){
         this.data.categories[this.i].goods = this.arr2;
         this.arr2.sort();
       }
     }
   },
-  
+  activated () {
+    // 页面显示时获取当前数据
+    this.i = this.$route.query.sindex;
+    this.arr = this.data.categories[this.i].goods;
+    this.arr2 = JSON.parse(JSON.stringify(this.arr))
+    let {sindex}=this.$route.query;
+    this.i=sindex/1;
+  }
 };
 </script>
 <style scoped lang="scss">
@@ -1274,6 +1284,7 @@ parent-name p span {
   top: 2.86rem;
   overflow-y: scroll;
   height: 10.5rem;
+  background: #fff
 }
 .goods-list .goods-ul {
   width: 100%;
