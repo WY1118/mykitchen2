@@ -1,19 +1,20 @@
 <template>
   <div class="top">
     <ul>
-      <router-link  
-      v-for="(item,index) in data" :key="index" 
-      v-if="item.parentId==i" 
-      tag="li" 
-      :to="'/reclassify?categoryId='+(item.parentId/1+1/1) " 
-      >
-        <a href="javascript:;" >
-          <img :src="item.checkicon" @click="fn(item)" >
-          <p >{{item.name}}</p>
-        </a>
-      </router-link>
+      <div v-for="(item,index) in data" :key="index" >
+        <router-link  
+        v-if="item.parentId==i" 
+        tag="li" 
+        :to="'/reclassify'+(item.parentId/1+1/1)+'?categoryId='+(item.parentId/1+1/1)+'&sname='+item.name+'&sindex='+va"  
+        >
+          <a href="javascript:;" >
+            <img :src="item.checkicon"  @click="fn(item,i)">
+            <p @click="fn(item,i)">{{item.name}}</p>
+          </a>
+        </router-link>
+        <router-view></router-view>
+      </div>  
     </ul>
-    <!-- <p>{{item.menu}}</p> -->
   </div>
 </template>
 
@@ -23,6 +24,7 @@ export default {
   props: ["i"],
   data() {
     return {
+      va:0,
       hasError: false,
       errorCode: "200",
       statusCode: "200",
@@ -1207,11 +1209,20 @@ export default {
       ]
     };
   },
-  methods: {
-    fn(v){
-      console.log(v.name)
-      console.log(this.i)
 
+  methods: {
+    fn(item,ind){
+      // 获取id与点击时下标值相等的对象
+      var a = this.data.filter(function(item){
+        return item.parentId==ind;
+      })
+      // 附上index
+      var b = a.forEach((element,index) => {
+        if(a[index].name==item.name){
+          this.va=index;
+        }
+      });    
+     
     }
   },
  
@@ -1219,31 +1230,31 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.top > ul {
+.top  ul {
   background: #fff;
   padding: 0.2rem 0.02rem 0 0.22rem;
   width: 5.69rem;
   height: 4.6rem;
 }
-.top > ul > li {
+.top  ul  li {
   width: 1.58rem;
   height: 2.2rem;
   margin: 0 0.22rem 0 0;
   float: left;
 }
-.top > ul > li > a {
+.top  ul  li  a {
   display: inline-block;
   width: 1.29rem;
   height: 2.18rem;
   margin-left: 0.15rem;
 }
-.top > ul > li > a > img {
+.top  ul  li  a  img {
   width: 1rem;
   height: 1rem;
   margin-left: 0.15rem;
   margin-top: 0.2rem;
 }
-.top > ul > li > a > p {
+.top  ul  li  a  p {
   display: block;
   width: 1rem;
   height: 0.86rem;

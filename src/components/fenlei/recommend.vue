@@ -9,15 +9,17 @@
         </div>
       </div>
       <ul>
-        <li v-for="(item,index) in data[0].children" :key="index">
+        <router-link tag="li" v-for="(item,index) in data[0].children" :key="index" :to="'/netWork'">
           <a href="javascript:;">
             <img :src="item.imgUrl" alt>
             <p>{{item.name}}</p>
           </a>
-        </li>
+        </router-link >
       </ul>
     </div>
+
     <div class="fgx"></div>
+
     <div class="top">
       <div class="tit">
         <div class="title">
@@ -27,12 +29,12 @@
         </div>
       </div>
       <ul>
-        <li v-for="(item,index) in data[1].children" :key="index">
+        <router-link tag="li" v-for="(item,index) in data[0].children" :key="index" :to="'/netWork'">
           <a href="javascript:;">
             <img :src="item.imgUrl" alt>
             <p>{{item.name}}</p>
           </a>
-        </li>
+        </router-link>
       </ul>
     </div>
   </div>
@@ -224,11 +226,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.tit{
+  background: #fff
+}
 .title {
   width: 2.52rem;
   height: 0.9rem;
   // margin: -.31rem 0px 0px;
-  // background: skyblue;
+  background: #fff;
   margin: 0 auto;
 }
 .title > p {
