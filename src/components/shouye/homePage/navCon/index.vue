@@ -1,15 +1,10 @@
 <template>
   <div class="clear navbox">
-    <div class="top-nav" v-for="(val,index1) in lists" :key="index1">
-      <ul v-for="(item,index2) in val.data.recommendedContent" :key="index2">
-        <router-link
-          v-for="(item2,index3) in item.items"
-          :key="index3"
-          tag="li"
-          :to="paths[index2][index3]"
-        >
-          <a href="">
-            <img :src="item2.imgUrl">
+    <div class="top-nav">
+      <ul>
+        <router-link v-for="(item,index) in arr" :key="index" tag="li" :to="paths[index]">
+          <a href>
+            <img :src="'http://39.106.67.233:100/'+item.smallGoodsTypePic">
           </a>
         </router-link>
         <keep-alive>
@@ -20,14 +15,25 @@
   </div>
 </template>
 <script>
+import Vuex from "vuex";
+import axios from "axios";
 export default {
   name: "navcon",
   components: {},
+  created() {
+    this.getGoods();
+  },
   data() {
     return {
       paths: [
-        ["/buyone", "/setmeal", "/onegroup", "/cleanvegetables"],
-        ["/returnmoney", "/reduce20", "/redpacket", "/newproduct"]
+        "/buyone",
+        "/setmeal",
+        "/onegroup",
+        "/cleanvegetables",
+        "/returnmoney",
+        "/reduce20",
+        "/redpacket",
+        "/newproduct"
       ],
       lists: [
         {
@@ -141,12 +147,22 @@ export default {
         }
       ]
     };
+  },
+  computed: {
+    ...Vuex.mapState({
+      arr: state => state.shouye.navdata
+    })
+  },
+  methods: {
+    ...Vuex.mapActions({
+      getGoods: "shouye/getNavlist"
+    })
   }
 };
 </script>
 <style scoped>
 /* 导航 */
-.navbox{
+.navbox {
   width: 100%;
   height: 4.36rem;
 }
