@@ -64,14 +64,14 @@
 
       <!--限时特惠 imglink1   goods-list 4  -->
       <div class="goods-list">
-        <div class="imglink">
+        <div class="img-link">
           <img :src="goods[4].items[0].imgUrl" alt>
         </div>
       </div>
 
       <!-- 限时特惠 imglink2   goods-list 5  -->
       <div class="goods-list">
-        <div class="imglink">
+        <div class="img-link">
           <img :src="goods[5].items[0].imgUrl" alt>
         </div>
       </div>

@@ -15,7 +15,7 @@ export default new Vuex.Store({
   actions: {
 
   },
-  modules: {
+  modules : {
     shopCar,
     mine,
     shouye,  
