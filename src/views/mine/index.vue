@@ -6,7 +6,9 @@
         <p>
           <img src="http://wmall.wochu.cn/h5/personal/img/cust-icon-defualt.png" alt>
         </p>
-        <router-link :to="{name:'login'}" ><span>User</span></router-link>
+        <router-link :to="{name:'login'}">
+          <span>User</span>
+        </router-link>
         <router-view></router-view>
         <!-- <span>{{this.$router.name}}</span> -->
       </div>
@@ -44,7 +46,7 @@
     </div>
     <div class="tgou">
       <ul>
-        <router-link to="Gbuying" tag="li" v-for="(i,index) in tg" :key="index" >
+        <router-link to="Gbuying" tag="li" v-for="(i,index) in tg" :key="index">
           <img :src="i.img1" alt>
           <p>{{i.tit1}}</p>
         </router-link>
@@ -56,7 +58,7 @@
         <router-link v-for="(j,index) in help" :key="index" to="help" tag="li">
           <img :src="j.img2" alt>
           <p>{{j.tit2}}</p>
-        </router-link> 
+        </router-link>
         <router-view></router-view>
       </ul>
     </div>
@@ -72,33 +74,42 @@
 </template>
 
 <script>
-import axios from "axios"
+
+import Vuex from "vuex";
 export default {
-  // created () {
-  //   axios.get("api/api/event/GetMbBannerList").then((data)=>{
-  //     console.log(data)
-  //   })
-  // },
+  created() {
+    // axios
+    //   .get(
+    //     "api/client/v1/groupBuy/HotSaleList?parameters=%7B%22pageSize%22%3A5%2C%22pageIndex%22%3A1%7D"
+    //   )
+    //   .then(data => {
+    //     // console.log(data);
+    //      this.arr.push(data.data);
+    //      console.log(this.arr.data)
+    //   });
+    this.getbuying();
+
+    
+    
+      
+     
+  },
   name: "mine",
   components: {},
+  computed: {
+    ...Vuex.mapState({
+      arrGbuy:state=>state.mine.arr
+    })
+  },
   methods: {
-    // post:function(){
-    //   axios.post("https://web-api.poco.cn/v1_1/rank/get_wap_homepage_info",{
-    //     userName:"111"
-    //   },{
-    //     headers:{
-    //       token:"tom"
-    //     }
-    //   }).then(res=>{
-    //     this.msg=res.data;
-    //     console.log(res.data)
-    //   }).catch(function(error){
-
-    //   })
-    // }
+    ...Vuex.mapActions({
+      getbuying:"mine/getGbuying"
+    })
   },
   data() {
     return {
+      userInfo: [],
+      arr:[],
       shouhuo: [
         {
           img: "http://wmall.wochu.cn/h5/personal/img/needtopay@3x.png",
@@ -188,7 +199,7 @@ body {
   font-size: 0.24rem;
   color: #fff;
   font-weight: 600;
- margin-left: 0.2rem!important
+  margin-left: 0.2rem !important;
 }
 .zhanghu {
   position: absolute;
@@ -303,7 +314,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 0.2rem
+  margin-top: 0.2rem;
   /* margin-top: 0.45rem;
   margin-left: 0.3rem; */
 }
@@ -316,11 +327,11 @@ body {
   margin-top: 0.2rem;
   margin-left: -0.1rem;
 }
-.shouhuo ul li img{
+.shouhuo ul li img {
   display: block;
   width: 0.8rem;
   height: 0.8rem;
-  margin-bottom: 0.2rem
+  margin-bottom: 0.2rem;
 }
 .tgou ul {
   display: flex;
@@ -341,12 +352,12 @@ body {
   flex-direction: column;
   align-items: center;
   margin-left: 0.3rem;
-  margin-top: -0.1rem
+  margin-top: -0.1rem;
 }
 .tgou ul li img {
   /* margin-left: 0.5rem;
   margin-top: -0.1rem; */
-   margin-bottom: 0.15rem; 
+  margin-bottom: 0.15rem;
   display: block;
   width: 0.8rem;
   height: 0.8rem;
@@ -374,12 +385,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-   margin-left: 0.05rem 
- 
+  margin-left: 0.05rem;
 }
 .help li img {
   display: block;
-   width: 0.8rem;
+  width: 0.8rem;
   height: 0.8rem;
   /* margin-left: 0.55rem; */
   margin-bottom: 0.15rem;

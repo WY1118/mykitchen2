@@ -16,7 +16,8 @@
           </div>
         </header>
         <section class="main-body">
-          <orderTime></orderTime>
+
+          <orderTime :isDeliveryTime.sync="isDeliveryTime"></orderTime>
           <tradeIn></tradeIn>
           <carMain></carMain>
         </section>
@@ -25,15 +26,20 @@
     <div v-else-if="userId">
       <unLogin></unLogin>
     </div>
+    <!--修改送货时间的设置页面-->
+    <deliveryTime v-show="isDeliveryTime" :isDeliveryTime.sync="isDeliveryTime"></deliveryTime>
     <carGoodsTop></carGoodsTop>
+
   </div>
 </template>
 <script>
-  import orderTime from './components/orderTime.vue';
-  import TradeIn from "./components/tradeIn";
-  import carMain from "./components/carMain";
-  import unLogin from "./components/unLogin";
+  import orderTime from '../../components/shopCar/orderTime.vue';
+  import TradeIn from "../../components/shopCar/tradeIn";
+  import carMain from "../../components/shopCar/carMain";
+  import unLogin from "../../components/shopCar/unLogin";
+  import deliveryTime from "../../components/shopCar/deliveryTime";
   import Vue from "vue"
+  //推荐商品
   // import carGoodsTop from "./components/carGoodsTop";
   //这里使用了全局的过滤器
    Vue.filter("carPrice",(v)=>{return "￥" + v;})
@@ -45,7 +51,11 @@ export default {
       left : "float:left",
       carlocation : "img/carlocation.png",
       cardown:"img/cardown-arr.png",
-      carGoods:localStorage.goods,
+      //是否显示配送时间
+      isDeliveryTime : false,
+      //是否有购物车
+      carGoods:true,
+      //是否登录
       userId:localStorage.userId
     }
   },
@@ -59,9 +69,10 @@ export default {
     orderTime,
     carMain,
     unLogin,
+    deliveryTime,
     carGoodsTop:resolve => {
-      require(['./components/carGoodsTop.vue'],resolve)
-    }
+      require(['../../components/shopCar/carGoodsTop.vue'],resolve)
+    },
   }
 }
 </script>
@@ -77,6 +88,7 @@ export default {
     width:100%;
     height:100%;
   }
+
 .home{
   width:100%;
   /*height:100%;*/
