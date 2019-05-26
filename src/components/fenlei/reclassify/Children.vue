@@ -50,7 +50,7 @@
     <section class="goods-list">
       <ul class="goods-ul" id="scroller">
         <div class="class-item">
-          <li v-for="(ite,num) in data.categories[i].goods" :key="num">
+          <router-link tag="li" v-for="(ite,num) in data.categories[i].goods" :key="num" :to="'/mall'">
             <div class="fl">
               <img :src="ite.picUrl" alt>
             </div>
@@ -66,7 +66,7 @@
                 <img src="../../../../public/img/icon-listcart-75@3x.png" alt>
               </div>
             </div>
-          </li>
+          </router-link>
         </div>
       </ul>
     </section>

@@ -5,20 +5,30 @@ export default {
         topGoodsList : []
     },
     mutations: {
-        SET_TOP_GOODS(state,topGoodsList){
+        SET_TOP_GOODS_LIST(state,topGoodsList){
             state.topGoodsList = topGoodsList;
         }
     },
     actions: {
-        getGoodsList({commit}){
-            axios.get("http://127.0.0.1/getAllGoodsList").then(({data})=>{
-                if(data){
-                    if(data.ok === 1){
-                        commit("SET_TOP_GOODS",data.goodsList)
+        getTopGoods({commit},cb=function(){}){
+            axios.get("http://39.106.67.233:100/getGoodsLists",{
+                params:{
+                    obj:{
+                        whereObj:{
+                            smallGoodsTypeName : "大大的推荐"
+                        },
+                        sortObj :{
+                            orderBy : 1
+                        }
                     }
+                }
+            }).then(({data})=>{
+                if(data){
+                    commit("SET_TOP_GOODS_LIST",data.goodsList);
+                    cb();
+
                 }
             })
         }
-
     }
 }

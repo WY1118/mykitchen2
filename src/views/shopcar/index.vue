@@ -1,29 +1,28 @@
 <template>
   <div class="home">
-    <div class="car-User" v-if="userId">
-      <div class="exGoods" v-if="carGoods">
-        <header>
-          <div class="header-top">
-            <div id="carback" :stlye="left" @click="carBack">
-              <img :src="back">
-            </div>
-            <div id="carlocation">
-              <img :src="carlocation" alt="" :style="left">
-              <span>请填写地址</span>
-              <img :src="cardown" alt="">
-            </div>
-            <div class="redact">编辑</div>
-          </div>
-        </header>
-        <section class="main-body">
-
-          <orderTime :isDeliveryTime.sync="isDeliveryTime"></orderTime>
-          <tradeIn></tradeIn>
-          <carMain></carMain>
-        </section>
-      </div>
-    </div>
-    <div v-else-if="userId">
+    <!--<div class="car-User" v-if="userId">-->
+      <!--<div class="exGoods" v-if="carGoods">-->
+        <!--<header>-->
+          <!--<div class="header-top">-->
+            <!--<div id="carback" :stlye="left" @click="carBack">-->
+              <!--<img :src="back">-->
+            <!--</div>-->
+            <!--<div id="carlocation">-->
+              <!--<img :src="carlocation" alt="" :style="left">-->
+              <!--<span>请填写地址</span>-->
+              <!--<img :src="cardown" alt="">-->
+            <!--</div>-->
+            <!--<div class="redact">编辑</div>-->
+          <!--</div>-->
+        <!--</header>-->
+        <!--<section class="main-body">-->
+          <!--<orderTime :isDeliveryTime.sync="isDeliveryTime"></orderTime>-->
+          <!--<tradeIn></tradeIn>-->
+          <!--<carMain></carMain>-->
+        <!--</section>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div v-if="!userId">
       <unLogin></unLogin>
     </div>
     <!--修改送货时间的设置页面-->
@@ -63,6 +62,8 @@ export default {
     carBack(){
       this.$router.go(-1);
     }
+  },
+  mounted(){
   },
   components: {
     TradeIn,

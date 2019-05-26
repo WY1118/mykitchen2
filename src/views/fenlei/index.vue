@@ -2,10 +2,10 @@
   <div class="home">
     <!-- header -->
     <div class="header">
-      <div class="search">
+      <router-link class="search" tag="div" :to="'/search'">
           <img src="http://wmall.wochu.cn/h5/classify/img/icon-search-40@2x.png" alt="">
           <div>支持首字母搜索</div>
-      </div>
+      </router-link>
       <div class="blank"></div>
     </div>
     <div class="con">

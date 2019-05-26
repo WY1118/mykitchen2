@@ -2,14 +2,19 @@
     <section class="no-login clear">
         <div class="no-login-hidden"></div>
         <div class="no-login-info">
-            <a href="">登录</a>
+            <a href="javascript:;" @click="login">登录</a>
         </div>
     </section>
 </template>
 
 <script>
     export default {
-        name: "unLogin"
+        name: "unLogin",
+        methods:{
+            login(){
+                this.$router.push({path:'Login'})
+            }
+        }
     }
 </script>
 

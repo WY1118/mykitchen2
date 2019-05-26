@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   
   props: ["i"],
@@ -1209,7 +1210,9 @@ export default {
       ]
     };
   },
-
+  created() {
+   this.abc()
+  },
   methods: {
     fn(item,ind){
       // 获取id与点击时下标值相等的对象
@@ -1223,6 +1226,22 @@ export default {
         }
       });    
      
+    },
+    abc(){
+      axios.get("http://39.106.67.233:100/getSmallGoodsTypeList",{
+        params:{
+          obj:{
+            whereObj:{
+              goodsTypeName:"我厨优选"
+            },
+            sortObj:{
+              addTime:1
+            }
+          }
+        }
+      }).then((data)=>{
+        // console.log(data.data.smallGoodsTypeList);
+      })
     }
   },
  

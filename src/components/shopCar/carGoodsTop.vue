@@ -2,94 +2,34 @@
     <section class="car-goodsTop">
         <div class="car-goodsTop-title"></div>
         <ul class="car-goodsTop-list">
-            <li class="goodsTop-list-item" v-for="item in $store.state.shopCar.topGoodsList">
-                <div class="item-img"><img :src="'http://127.0.0.1/'+item.goodsSmallPic" alt=""></div>
+            <router-link tag="li" :to="{path:'/detailsGoods/'+item._id}" class="goodsTop-list-item" v-for="item in $store.state.shopCar.topGoodsList">
+                <div class="item-img"><img v-lazy="'http://39.106.67.233:100/'+item.goodsSmallPic" alt=""></div>
                 <div class="item-info">
-                    <p class="item-info-title">{{item.goodsInfo}}</p>
+                    <p class="item-info-title">{{item.goodsName}}</p>
                     <div class="item-info-main">
                         <div class="item-info-price">
-                            <del class="carGoodsTop-old">{{item.originalPrice | carPrice}}</del>
+                            <del class="carGoodsTop-old" v-text="item.originalPrice?'￥'+item.originalPrice:''"></del>
                             <span class="carGoodsTop-new">{{item.currentPrice | carPrice}}</span>
                         </div>
                         <div class="item-info-add"></div>
                     </div>
                 </div>
-
-            </li>
+            </router-link>
         </ul>
         <div class="car-load-more">没有更多了~</div>
     </section>
 </template>
 <script>
+    import Vue from 'vue'
+    Vue.use(Lazyload);
     export default {
         name: "carGoodsTop",
         data(){
             return {
-                carImgInfo:[
-                    {
-                        img: "img/rou.jpg",
-                        isCheck: true,
-                        incheck: "img/unselect.png",
-                        unCheck: "img/selected.png",
-                        goodsInfo:"河北皇冠梨4粒（单果200g以上）",
-                        newGoodsPrice : "19.9",
-                        oldGoodsPrice : "24.9"
-
-                    },
-                    {
-                        img: "img/rou.jpg",
-                        isCheck: true,
-                        incheck: "img/unselect.png",
-                        unCheck: "img/selected.png",
-                        goodsInfo:"河北皇冠梨4粒（单果200g以上）",
-                        newGoodsPrice : "19.9",
-                        oldGoodsPrice : "24.9"
-
-                    },{
-                        img: "img/rou.jpg",
-                        isCheck: true,
-                        incheck: "img/unselect.png",
-                        unCheck: "img/selected.png",
-                        goodsInfo:"河北皇冠梨4粒（单果200g以上）",
-                        newGoodsPrice : "19.9",
-                        oldGoodsPrice : "24.9"
-
-                    },
-                    {
-                        img: "img/rou.jpg",
-                        isCheck: true,
-                        incheck: "img/unselect.png",
-                        unCheck: "img/selected.png",
-                        goodsInfo:"河北皇冠梨4粒（单果200g以上）",
-                        newGoodsPrice : "19.9",
-                        oldGoodsPrice : "24.9"
-
-                    },
-                    {
-                        img: "img/rou.jpg",
-                        isCheck: true,
-                        incheck: "img/unselect.png",
-                        unCheck: "img/selected.png",
-                        goodsInfo:"河北皇冠梨4粒（单果200g以上）",
-                        newGoodsPrice : "19.9",
-                        oldGoodsPrice : "24.9"
-
-                    },
-                    {
-                        img: "img/rou.jpg",
-                        isCheck: true,
-                        incheck: "img/unselect.png",
-                        unCheck: "img/selected.png",
-                        goodsInfo:"河北皇冠梨4粒（单果200g以上）",
-                        newGoodsPrice : "19.9",
-                        oldGoodsPrice : "24.9"
-                    }
-                ]
             }
         },
         mounted(){
-            this.$store.dispatch("getGoodsList")
-            console.log(this.$store.state.shopCar)
+            this.$store.dispatch("getTopGoods");
         },
 
     }

@@ -69,6 +69,7 @@ export default {
 .swiper-container {
   width: 100%;
   height: 3.78rem !important;
+  background: #fff
 }
 .swiper-wrapper {
   min-height: 3.78rem !important;

@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <keep-alive>
+    <keep-alive exclude="detailGoods">
       <router-view></router-view>
-    </keep-alive> 
+    </keep-alive>
     <TabBar v-if="this.$route.meta.tabbarFlag"/>
   </div>
 </template>
