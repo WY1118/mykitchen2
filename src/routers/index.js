@@ -6,7 +6,6 @@ import shopcar from "./shopcar/index.js";
 import mine from "./mine/index.js";
 import goodsinfo from "./shouye/goodsInfo/index.js";
 import shopCarInfo from "./shopcar/goodsInfo/index.js"
-
 import buyone from "./shouye/nav/buyone.js";
 import cleanvegetables from "./shouye/nav/cleanvegetables.js";
 import newproduct from "./shouye/nav/newproduct.js";
@@ -17,7 +16,9 @@ import returnmoney from "./shouye/nav/returnmoney.js";
 import setmeal from "./shouye/nav/setmeal.js";
 import help from "./mine/menu/help.js";
 import Login from "./mine/login/login";
-
+import menu from "./mine/menu/menu.js";
+import Gbuying from "./mine/Gbuying/Gbuying.js";
+import Register from "./mine/register/register.js";
 // 跳二级
 import Optimization from "./fenlei/reclassify/Optimization.js";
 import Dishes from "./fenlei/reclassify/Dishes.js"
@@ -33,8 +34,9 @@ import Staplefood from "./fenlei/reclassify/Staplefood.js"
 import NetWork from "./fenlei/recommnd/NetWork.js"
 
 // import reclassify from "./fenlei/reclassify/index.js";
-import menu from "./mine/menu/menu.js";
-import Gbuying from "./mine/Gbuying/Gbuying.js";
+
+
+
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -56,10 +58,13 @@ export default new Router({
     reduce20,
     returnmoney,
     setmeal,
+    
+    
     help,
     menu,
     Gbuying,
     Login,
+    
     Optimization,
     Dishes,
     Cleanvegetable,
@@ -73,11 +78,13 @@ export default new Router({
     Staplefood,
     NetWork,
     shopCarInfo,
+    Mall,
+    Seach,
+    Register,
     {
       path:"**",
       redirect:"/shouye"
     }
-
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {

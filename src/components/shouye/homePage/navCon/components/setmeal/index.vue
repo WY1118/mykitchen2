@@ -2,7 +2,7 @@
   <div class="main-list">
     <div class="header">
       <div class="ac-back">
-        <a href="#/shouyes">
+        <a href="#/shouye">
           <img src="http://wmall.wochu.cn/h5/img/ac-back.png">
         </a>
       </div>
@@ -57,6 +57,10 @@ export default {
 }
 </script>
 <style scoped>
+.header img {
+    height: .84rem;
+    width: .84rem;
+}
 .main-list {
     padding: .2rem 0;
     background: #fff;
