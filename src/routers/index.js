@@ -32,7 +32,8 @@ import Point from "./fenlei/reclassify/Point.js"
 import Snack from "./fenlei/reclassify/Snack.js"
 import Staplefood from "./fenlei/reclassify/Staplefood.js"
 import NetWork from "./fenlei/recommnd/NetWork.js"
-
+import Seach from './fenlei/search/Search'
+import Mall from './fenlei/xiangqing/Mall'
 // import reclassify from "./fenlei/reclassify/index.js";
 
 
