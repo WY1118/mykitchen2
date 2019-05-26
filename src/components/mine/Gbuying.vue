@@ -1,127 +1,73 @@
 <template>
   <div class="buying">
     <div class="top">
-      
-        <img src="http://wmall.wochu.cn/h5/tg/img/goback.png" @click="goBack()" alt>
-     
-      <span>我的团购</span>
+      <img src="http://wmall.wochu.cn/h5/tg/img/goback.png" @click="goBack()" alt>
+
+      <span>超值团购</span>
       <div></div>
     </div>
     <div class="second">
-    <div class="banner">
-      <img src="http://wmall.wochu.cn/h5/tg/img/myGroup-banner.png" alt>
-    </div>
-    <div class="load">
-      <ul>
-        <router-link
-          tag="li"
-          v-for="(item,index) in load"
-          @click="addClass(index)"
-          :class="{load_active:index==current}"
-          to=" "
-          :key="index"
-          > {{item.tit}}
-        </router-link>
-      </ul>
-    </div>
-    <div class="shop_list" v-for="(item,index) in shop_list" :key="index">
-        <img :src="item.img" alt="">
-        <div class="tit1">
-            <span>{{item.s}}</span>
-            <div class="tg">
-               <img :src="item.tg1" alt="">
-                <span>{{item.tg2}}</span>
+      <div class="banner">
+        <img src="http://wmall.wochu.cn/h5/tg/img/myGroup-banner.png" alt>
+      </div>
+      <div class="shop">
+        <div class="shop_list" v-for="(item,index) in arrGbuy.items" :key="index">
+          <div class="shop_top">
+            <img src="http://hmall.wochu.cn/hotsale/2019-05-24/img/niurouli (4).jpg" alt>
+            <h3>{{item.product_describe}}</h3>
+            <h4>{{item.sell_point}}</h4>
+            <div class="shop_bottom">
+              <div class="shop_foot">
+              <span>￥{{item.discount_price}}</span>
+              <p>￥{{item.market_price}}</p>
+              </div>
+              <h5>{{item.reduced_rate}}折</h5>
             </div>
-            <div class="invite">
-                <h3>{{item.h3}}</h3>
-                <h4>{{item.h4}}</h4>
-            </div>
+          </div>
         </div>
-    </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
+import Vuex from "vuex";
 export default {
   name: "Gbuying",
-  methods: {},
+  created() {
+    this.getbuying();
+  },
+
   components: {},
-  methods:{
-    goBack:function(){
-      this.$router.back()
+  computed: {
+    ...Vuex.mapState({
+      arrGbuy: state => state.mine.arr
+    })
+  },
+  methods: {
+    ...Vuex.mapActions({
+      getbuying: "mine/getGbuying"
+    }),
+    goBack: function() {
+      this.$router.back();
     }
   },
   data() {
     return {
-        current:0,
-      load: [
-        {
-          tit: "进行中"
-        },
-        {
-          tit: "已下单"
-        },
-        {
-          tit: "已失效"
-        }
-      ],
-      shop_list:[
-          {
-              img:"http://hmall.wochu.cn/hotsale/2019-05-07/img/zhiroujiao (5).jpg",
-              s:"大娘荠菜鲜笋猪肉饺700g*2劲爆团",
-              tg1:"http://wmall.wochu.cn/h5/tg/img/nmicon.png",
-              tg2:"匿名用户的团 还差2人 1/3",
-              h3:"￥39.9",
-              h4:"邀请好友"
-
-              
-          },
-                {
-              img:"http://hmall.wochu.cn/hotsale/2019-05-07/img/zhiroujiao (5).jpg",
-              s:"大娘荠菜鲜笋猪肉饺700g*2劲爆团",
-              tg1:"http://wmall.wochu.cn/h5/tg/img/nmicon.png",
-              tg2:"匿名用户的团 还差2人 1/3",
-              h3:"￥39.9",
-              h4:"邀请好友"
-
-              
-          },
-                {
-              img:"http://hmall.wochu.cn/hotsale/2019-05-07/img/zhiroujiao (5).jpg",
-              s:"大娘荠菜鲜笋猪肉饺700g*2劲爆团",
-              tg1:"http://wmall.wochu.cn/h5/tg/img/nmicon.png",
-              tg2:"匿名用户的团 还差2人 1/3",
-              h3:"￥39.9",
-              h4:"邀请好友"
-
-              
-          },
-                {
-              img:"http://hmall.wochu.cn/hotsale/2019-05-07/img/zhiroujiao (5).jpg",
-              s:"大娘荠菜鲜笋猪肉饺700g*2劲爆团",
-              tg1:"http://wmall.wochu.cn/h5/tg/img/nmicon.png",
-              tg2:"匿名用户的团 还差2人 1/3",
-              h3:"￥39.9",
-              h4:"邀请好友"
-
-              
-          }
-
-      ]
+      
     };
   }
 };
 </script>
 <style scoped>
-.buying{
-    display: flex;
-    flex-direction: column
+.buying {
+  display: flex;
+  flex-direction: column;
+  background: #f8f8f8
 }
-.second{
-    flex: 1;
-    overflow: auto
+.second {
+  flex: 1;
+  overflow: auto;
 }
-
 .top {
   width: 100%;
   text-align: center;
@@ -131,102 +77,101 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: 10;
   border-bottom: 1px solid #f8f8f8;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.36rem;
   color: #333;
-  padding-left: 0.3rem
+  padding-left: 0.3rem;
 }
 .top span {
   margin-left: -0.6rem;
   font-weight: 300;
 }
 .banner {
-  height: 6rem;
+  height: 5rem;
 }
 .banner img {
-  height: 80%;
+  height: 5rem;
   width: 100%;
 }
-.load{
-    height: 0.8rem;
-    width: 100%;
-    background: #fff;
-    margin-top: -1.2rem;
+.shop {
+  /* display: flex; */
+  width: 100%;
+  /* flex-wrap: wrap; */
+  display: flex;
+  flex-wrap: wrap;
+  
+
+}
+
+.shop_list {
+  background: #ffffff;
+  width: 3.3rem;
+  height: 4rem;
+  margin-top: 0.2rem;
+  margin-left: 0.3rem
+  /* border: 1px solid; */
    
 }
-.load ul{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
 
-}
-.load ul li{
-    height: 0.8rem;
-    line-height: 0.8rem;
-    font-size: 0.3rem
-}
-.lad_active{
-    border-bottom: 1px solid #e17a2e;
-    color: #e17a2e;
-}
-.shop_list{
-    height: 2.5rem;
-    background: #ffffff;
-    display: flex;
-    justify-content: space-around;
-    margin-top: 0.2rem 
-}
-.shop_list img{
-    width: 35%;
-    height: 90%;
-    margin-top: 0.1rem
+.shop_list img {
+  display: block;
+  height: 1.8rem;
+  width: 3.2rem;
 }
 
-.tit1 span{
-    display: block;
-    font-size: 0.3rem;
-    width: 95%;
-    color: #000;
-    padding-top: 0.2rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis
+.shop_top {
+  height: 4.5rem;
+  width: 3rem;
+  /* background: red; */
+  
+  /* margin-left: 0.8rem;
+  margin-right: 0.5rem */
 }
-.tg img{
-    width: 30%;
-    height: 30%;
+.shop_top h3{
+  margin-top: 0.2rem;
+  width: 3.3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.3rem;
+  
 }
-.tg{
-    display: flex
+.shop_top h4{
+  text-align: center;
+  margin-left: 0.2rem;
+  margin-top: 0.15rem;
+  color: #666;
+  width: 3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.22rem;
 }
-.tg span{
-    margin-top: 0.2rem
+.shop_bottom{
+  width: 100%;
+  height: 1rem;
+  /* background: red; */
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem
 }
-.invite{
-    display: flex;
-    justify-content: space-between
+.shop_bottom span{
+  color: #ff701e;
+  font-size: 0.24rem
 }
-.invite h3{
-    color: #e17a2e;
-    font-size: 0.4rem
+.shop_foot{
+  width: 0.5rem;
+  display: flex
 }
-.invite h4{
-    display: block;
-    background: #f96d16;
-    color: #fff;
-    font-size: .36rem;
-    width: 2rem;
-    height: 0.6rem;
-    line-height: .6rem;
-    text-align: center;
-    border-radius: .35rem;
-    margin-left: .12rem;
+.shop_foot p{
+  color: #999;
+  text-decoration: line-through
 }
-
-
-
+.shop_bottom h5{
+  color: #ff701e   
+}
 </style>

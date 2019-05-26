@@ -1,8 +1,10 @@
 module.exports = {
+    // http://api9.wochu.cn/api/app/acts?version=20.0.0&source=H
     devServer:{
         proxy:{
             "/api":{
-                target:"http://www.haomua.com",
+                target:"http://tg.wochu.cn",
+                target:"http://api9.wochu.cn",
                 changeOrigin:true,
                 pathRewrite:{
                     "^/api":""

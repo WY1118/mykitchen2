@@ -971,7 +971,7 @@
       >
       <!-- 返回顶部按钮 -->
       <div
-        class="gotopbtn"
+        class="gotopbtn" @click="goTop" ref="btn"
         style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
       >
         <img src="https://wmall.wochu.cn/h5/activityTemplate/img/go_top.png">
@@ -987,7 +987,41 @@
   </div>
 </template>
 <script>
-export default {};
+let timer = null
+export default {
+  data() {
+    return {
+      isTop:true
+    }
+  },
+  mounted() {
+      this.needScroll()
+  },
+  methods: {
+    needScroll(){
+      let clientHeight = document.documentElement.clientHeight
+      let obtn = this.$refs.btn
+      window.onscroll = function () {
+        let osTop = document.documentElement.scrollTop || document.body.scrollTop
+        if (!this.isTop) {
+          clearInterval(timer)
+        }
+        this.isTop = false
+      }
+    },
+    goTop(){
+         timer = setInterval(function () {
+        let osTop = document.documentElement.scrollTop || document.body.scrollTop
+        let ispeed = Math.floor(-osTop / 5)
+        document.documentElement.scrollTop = document.body.scrollTop = osTop + ispeed
+        this.isTop = true
+        if (osTop === 0) {
+          clearInterval(timer)
+        }
+      }, 30)
+    }
+  },
+};
 </script>
 <style scoped>
 .buyone {

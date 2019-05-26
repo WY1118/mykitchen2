@@ -3,20 +3,20 @@
         <div class="temp-list1">
           <div class="temp-title">
             <span></span>
-            秒变大厨
+            {{goods[7].title}}
             <span></span>
           </div>
           <ul>
             <li>
               <div class="img-view">
-                <img src="img/rou.jpg" alt>
+                <img :src="goods[7].items[0].imgUrl" alt>
                 <div class="zhijiang">
                   <img src="img/zhijiang.png" alt>
                 </div>
               </div>
               <div class="temp-goods-info">
-                <p class="temp-goods-name">我厨优选小排400g</p>
-                <div class="goods-intro">不腥不臊，厨艺小白也能做出鲜滋味</div>
+                <p class="temp-goods-name">{{goods[7].items[0].goodsName}}</p>
+                <div class="goods-intro">{{goods[7].items[0].description}}</div>
                 <div class="temp-goods-price">
                   <div class="price-wrap">
                     <div class="real-price">
@@ -24,11 +24,12 @@
                       <span class="before-point">14</span>
                       <span class="affter-point">.9</span>
                     </div>
-                    <p class="markt-price">¥ 24.9</p>
+                    <p class="markt-price">¥{{goods[7].items[0].marketPrice}}</p>
                   </div>
                   <div class="add-to-cart">
                     <img src="img/add.png" alt>
                   </div>
+
                 </div>
               </div>
             </li>
@@ -36,16 +37,36 @@
         </div>
 </template>
 <script>
+import Vuex from "vuex";
+import axios from "axios"
 export default {
   name: "goodslist1",
   components: {},
   data() {
-    return {};
-  }
+    return {
+      data:[]
+    };
+  },
+  created() {
+    this.getGoods();
+  },
+   computed: {
+    ...Vuex.mapState({
+      goods:state=>state.shouye.homegoods
+    })
+  },
+   methods: {
+    ...Vuex.mapActions({
+      getGoods:"shouye/gethomeGoods"
+    }),
+   },
+   mounted() {
+      //  console.log(this.$store)
+   },
 };
 </script>
 <style scoped>
-/* 秒变大厨*/
+/* 限时特惠 */
 .temp-list1 {
   padding-top: 0.3rem;
   background: #f4f4f4;
@@ -165,6 +186,13 @@ export default {
   line-height: 0.6rem;
 }
 .add-to-cart {
-  width: 25%;
+  float: right;
+  width: .52rem;
+  height: .52rem;
+}
+.add-to-cart img {
+  width: 100%;
+  height: 100%;
+  vertical-align: text-top;
 }
 </style>

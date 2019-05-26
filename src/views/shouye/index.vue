@@ -48,7 +48,7 @@
       <!-- 鸡翅0元抢  goods-list 1  -->
       <div class="goods-list">
         <div class="img-link">
-          <img src="img/jichi.gif" alt>
+          <img :src="goods[1].items[0].imgUrl" alt>
         </div>
       </div>
 
@@ -65,28 +65,28 @@
       <!--限时特惠 imglink1   goods-list 4  -->
       <div class="goods-list">
         <div class="imglink">
-          <img src="img/niunan.jpg" alt>
+          <img :src="goods[4].items[0].imgUrl" alt>
         </div>
       </div>
 
       <!-- 限时特惠 imglink2   goods-list 5  -->
       <div class="goods-list">
         <div class="imglink">
-          <img src="img/zubu.jpg" alt>
+          <img :src="goods[5].items[0].imgUrl" alt>
         </div>
       </div>
       <!-- 限时特惠 imglink3   goods-list 6  -->
       <div class="goods-list">
         <div class="group-list3">
           <div class="left-view">
-            <img src="img/xileng.jpg" alt>
+            <img :src="goods[6].items[0].imgUrl" alt>
           </div>
           <div class="right-view">
             <div class="rt-top-view">
-              <img src="img/wei.jpg" alt>
+              <img :src="goods[6].items[1].imgUrl" alt>
             </div>
             <div class="rt-bottom-view">
-              <img src="img/jinqun.jpg" alt>
+              <img :src="goods[6].items[2].imgUrl" alt>
             </div>
           </div>
         </div>
@@ -107,9 +107,9 @@
 
       <Goodslist></Goodslist>
       <!-- 我厨优选      goods-list 10  -->
-      <div class="footer2">
+      <!-- <div class="footer2">
         <div class="ceshi"></div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -121,6 +121,7 @@ import Miaobian2 from "../../components/shouye/homePage/miaobiandachu/goodslist2
 import Lunbo from "../../components/shouye/homePage/lunbo/index.vue";
 import Navcon from "../../components/shouye/homePage/navCon/index.vue";
 import Goodslist from "../../components/shouye/homePage/goodslist/index.vue";
+import Vuex from "vuex";
 export default {
   name: "shouye",
   components: {
@@ -134,12 +135,22 @@ export default {
   },
   data() {
     return {
-      // navs: [
-      //   ["img/f.jpg", "img/f.jpg", "img/f.jpg", "img/f.jpg"],
-      //   ["img/f.jpg", "img/f.jpg", "img/f.jpg", "img/f.jpg"]
-      // ]
+  
     };
-  }
+  },
+  created() {
+    this.getGoods()
+  },
+  computed: {
+      ...Vuex.mapState({
+      goods:state=>state.shouye.homegoods
+    })
+  },
+  methods: {
+     ...Vuex.mapActions({
+      getGoods:"shouye/gethomeGoods"
+    }),
+  },
 };
 </script>
 <style scoped>
