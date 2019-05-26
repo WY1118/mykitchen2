@@ -5,6 +5,7 @@ import fenlei from "./fenlei/index.js";
 import shopcar from "./shopcar/index.js";
 import mine from "./mine/index.js";
 import goodsinfo from "./shouye/goodsInfo/index.js";
+import shopCarInfo from "./shopcar/goodsInfo/index.js"
 
 import buyone from "./shouye/nav/buyone.js";
 import cleanvegetables from "./shouye/nav/cleanvegetables.js";
@@ -29,9 +30,7 @@ import Seafood from "./fenlei/reclassify/Seafood.js"
 import Point from "./fenlei/reclassify/Point.js"
 import Snack from "./fenlei/reclassify/Snack.js"
 import Staplefood from "./fenlei/reclassify/Staplefood.js"
-
 import NetWork from "./fenlei/recommnd/NetWork.js"
-
 
 // import reclassify from "./fenlei/reclassify/index.js";
 import menu from "./mine/menu/menu.js";
@@ -73,12 +72,12 @@ export default new Router({
     Snack,
     Staplefood,
     NetWork,
-
-
+    shopCarInfo,
     {
       path:"**",
       redirect:"/shouye"
     }
+
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
