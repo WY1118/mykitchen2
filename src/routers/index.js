@@ -32,6 +32,8 @@ import Staplefood from "./fenlei/reclassify/Staplefood.js"
 
 import NetWork from "./fenlei/recommnd/NetWork.js"
 
+import Mall from "./fenlei/xiangqing/Mall.js"
+import Seach from "./fenlei/search/Search.js"
 
 // import reclassify from "./fenlei/reclassify/index.js";
 import menu from "./mine/menu/menu.js";
@@ -73,6 +75,8 @@ export default new Router({
     Snack,
     Staplefood,
     NetWork,
+    Mall,
+    Seach,
 
 
     {
