@@ -21,7 +21,6 @@
 </template>
 <script>
     import Vue from 'vue'
-    import { Lazyload } from 'mint-ui';
     Vue.use(Lazyload);
     export default {
         name: "carGoodsTop",
@@ -36,11 +35,6 @@
     }
 </script>
 <style scoped lang="scss">
-    image[lazy=loading] {
-        width: 32.5%;
-        height: 3.92rem;
-        margin: auto;
-    }
     .car-goodsTop{
         padding: 1rem .28rem 1.5rem;
         display: flex;
