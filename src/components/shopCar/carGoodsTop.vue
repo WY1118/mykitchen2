@@ -3,7 +3,7 @@
         <div class="car-goodsTop-title"></div>
         <ul class="car-goodsTop-list">
             <router-link tag="li" :to="{path:'/detailsGoods/'+item._id}" class="goodsTop-list-item" v-for="item in $store.state.shopCar.topGoodsList">
-                <div class="item-img"><img v-lazy="'http://39.106.67.233:100/'+item.goodsSmallPic" alt=""></div>
+                <div class="item-img"><img :src="'http://39.106.67.233:100/'+item.goodsSmallPic" alt=""></div>
                 <div class="item-info">
                     <p class="item-info-title">{{item.goodsName}}</p>
                     <div class="item-info-main">
@@ -33,7 +33,7 @@
 
     }
 </script>
-<style scoped lang="scss"
+<style scoped lang="scss">
     .car-goodsTop{
         padding: 1rem .28rem 1.5rem;
         display: flex;
