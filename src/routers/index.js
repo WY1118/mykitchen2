@@ -39,8 +39,9 @@ import NetWork from "./fenlei/recommnd/NetWork.js"
 
 
 
+import menu from "./mine/menu/menu.js";
+import Gbuying from "./mine/Gbuying/Gbuying.js";
 Vue.use(Router)
-
 export default new Router({
   routes: [
     {
@@ -79,7 +80,6 @@ export default new Router({
     Point,
     Snack,
     Staplefood,
-
     NetWork,
     Register,
  
